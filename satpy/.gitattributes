@@ -1,1 +1,2 @@
 modis_true_color_rgb_201603301143_eurol_thumb.png filter=lfs diff=lfs merge=lfs -text
+true_color_rayleigh_only_201504201203_eurol_thumb.png filter=lfs diff=lfs merge=lfs -text
