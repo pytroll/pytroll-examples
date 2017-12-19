@@ -1,0 +1,2 @@
+olci_20171015_westafrica_true_color_raw_thumb.png filter=lfs diff=lfs merge=lfs -text
+olci_20171015_true_color_desert_and_sea_thumb.png filter=lfs diff=lfs merge=lfs -text
