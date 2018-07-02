@@ -11900,7 +11900,20 @@ a.anchor-link {
 
 <div class="reveal">
 <div class="slides">
-<section><section>
+<aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To convert and serve this notebook as a reveal.js slideshow:</p>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">SatPy</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">slides</span> <span class="o">--</span><span class="n">post</span> <span class="n">serve</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_theme</span><span class="o">=</span><span class="n">solarized</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_scroll</span><span class="o">=</span><span class="bp">True</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_transition</span><span class="o">=</span><span class="n">none</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</aside><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13136,7 +13149,7 @@ Attributes:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">base_dir</span><span class="o">=</span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="s1">&#39;LZW&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">writer</span><span class="o">=</span><span class="s1">&#39;geotiff&#39;</span><span class="p">,</span> <span class="n">base_dir</span><span class="o">=</span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="s1">&#39;LZW&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13148,7 +13161,235 @@ Attributes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Fun-Stuff">Fun Stuff<a class="anchor-link" href="#Fun-Stuff">&#182;</a></h1>
+<h1 id="Fun-Stuff:-Stacked-Scenes">Fun Stuff: Stacked Scenes<a class="anchor-link" href="#Fun-Stuff:-Stacked-Scenes">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">MultiScene</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">dask.diagnostics</span> <span class="k">import</span> <span class="n">ProgressBar</span>
+<span class="n">base_dir</span> <span class="o">=</span> <span class="s1">&#39;/data/data/viirs/2018_06_29/&#39;</span>
+<span class="n">viirs_passes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2018_06_29_180_0614&#39;</span><span class="p">,</span> <span class="s1">&#39;2018_06_29_180_0752&#39;</span><span class="p">,</span> <span class="s1">&#39;2018_06_29_180_0934&#39;</span><span class="p">]</span>
+<span class="n">viirs_scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span>
+                      <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="n">vp</span><span class="p">,</span> <span class="s1">&#39;*.h5&#39;</span><span class="p">)))</span> 
+                <span class="k">for</span> <span class="n">vp</span> <span class="ow">in</span> <span class="n">viirs_passes</span><span class="p">]</span>
+<span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">viirs_scenes</span><span class="p">)</span>
+<span class="n">mscn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;I04&#39;</span><span class="p">])</span>
+<span class="n">new_mscn</span> <span class="o">=</span> <span class="n">mscn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;211e&#39;</span><span class="p">)</span>
+<span class="n">blended_scn</span> <span class="o">=</span> <span class="n">new_mscn</span><span class="o">.</span><span class="n">blend</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
+    <span class="n">blended_scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Rasterio 1.0+ required for setting colorinterp
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[#####                                   ] | 13% Completed |  9.0s</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/davidh/anaconda/envs/polar2grid_py36/lib/python3.6/site-packages/dask/local.py:271: RuntimeWarning: invalid value encountered in greater_equal
+  return func(*args2)
+/Users/davidh/anaconda/envs/polar2grid_py36/lib/python3.6/site-packages/dask/local.py:271: RuntimeWarning: invalid value encountered in less_equal
+  return func(*args2)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[########################################] | 100% Completed |  4min 17.1s
+[########################################] | 100% Completed |  0.1s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> gdal_translate -of PNG -outsize <span class="m">10</span>% <span class="m">10</span>% I04_20180629_061415<span class="o">{</span>.tif,.png<span class="o">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Input file size is 5120, 5120
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="I04_20180629_061415.png" alt="Blended I04" style="width:550px"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Fun-Stuff:-Animations">Fun Stuff: Animations<a class="anchor-link" href="#Fun-Stuff:-Animations">&#182;</a></h1><div class="highlight"><pre><span></span><span class="n">scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">step_files</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">step_files</span> <span class="ow">in</span> <span class="n">grouped_files</span><span class="p">]</span>
+<span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">scenes</span><span class="p">)</span>
+<span class="n">mscn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;C01&#39;</span><span class="p">])</span>
+<span class="n">new_mscn</span> <span class="o">=</span> <span class="n">mscn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">resampler</span><span class="o">=</span><span class="s1">&#39;native&#39;</span><span class="p">)</span>
+<span class="n">new_mscn</span><span class="o">.</span><span class="n">save_animation</span><span class="p">(</span><span class="s1">&#39;{name}_{start_time:%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S}.mp4&#39;</span><span class="p">,</span>
+                        <span class="n">fps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                        <span class="n">output_params</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;-vf&quot;</span><span class="p">,</span> <span class="s2">&quot;format=yuv420p,scale=640:-1&quot;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;video width=&quot;640&quot; height=&quot;480&quot; controls&gt;</span>
+<span class="s2">  &lt;source src=&quot;C01_20180623_000045.mp4&quot; type=&quot;video/mp4&quot;&gt;</span>
+<span class="s2">&lt;/video&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<video width="640" height="480" controls>
+  <source src="C01_20180623_000045.mp4" type="video/mp4">
+</video>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Fun-Stuff:-Cartopy">Fun Stuff: Cartopy<a class="anchor-link" href="#Fun-Stuff:-Cartopy">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/viirs/conus_day/*t180*.h5&#39;</span><span class="p">)</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">filenames</span><span class="p">)</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;I04&#39;</span><span class="p">])</span>
+<span class="n">new_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;211e&#39;</span><span class="p">)</span>
+
+<span class="n">crs</span> <span class="o">=</span> <span class="n">new_scn</span><span class="p">[</span><span class="s1">&#39;I04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_cartopy_crs</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">new_scn</span><span class="p">[</span><span class="s1">&#39;I04&#39;</span><span class="p">],</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Kelvin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="I04_cartopy_plot.png" alt="I04 Cartopy"></p>
+
 </div>
 </div>
 </div></section></section><section><section>
