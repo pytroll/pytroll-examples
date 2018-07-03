@@ -11928,7 +11928,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Coauthors">Coauthors<a class="anchor-link" href="#Coauthors">&#182;</a></h1><ul>
+<h1 id="SatPy-Core-Developers">SatPy Core Developers<a class="anchor-link" href="#SatPy-Core-Developers">&#182;</a></h1><ul>
 <li>Martin Raspaud</li>
 <li>Adam Dybbroe</li>
 <li>Panu Lahtinen</li>
@@ -11951,9 +11951,9 @@ a.anchor-link {
 <li>Software Developer @ Space Science and Engineering Center (SSEC) - University of Wisconsin - Madison</li>
 <li>Community Satellite Processing Package (CSPP) Team</li>
 <li>Polar2Grid/Geo2Grid</li>
-<li>Satellite Information Familiarization Tool (SIFT)</li>
 <li>PyTroll/SatPy Maintainer</li>
-<li>VisPy Maintainer</li>
+<li>Satellite Information Familiarization Tool (SIFT) - Poster</li>
+<li>VisPy Maintainer - Plenary</li>
 </ul>
 
 </div>
@@ -11964,21 +11964,18 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Weather-Satellite-Data">Weather Satellite Data<a class="anchor-link" href="#Weather-Satellite-Data">&#182;</a></h1><ul>
+<li>Use Cases:<ul>
+<li>Forecasting and Forecast models</li>
+<li>Research/Analysis</li>
+<li>Pretty Pictures</li>
+</ul>
+</li>
 <li>Instruments:<ul>
-<li>Imagers and sounders</li>
-<li>Visible, infrared, near-infrared</li>
-<li>Land, water, atmosphere</li>
 <li>Geostationary (full disk and regions)</li>
 <li>Polar-orbiting</li>
 <li>Direct broadcast versus archive</li>
-</ul>
-</li>
-<li>Use Cases:<ul>
-<li>Forecasting</li>
-<li>Forecast models</li>
-<li>Research/Analysis</li>
-<li>Algorithm/Product development</li>
-<li>Pretty Pictures</li>
+<li>Imagers and sounders</li>
+<li>Multiple visible, infrared, near-infrared channels or bands</li>
 </ul>
 </li>
 </ul>
@@ -12010,22 +12007,22 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="SatPy">SatPy<a class="anchor-link" href="#SatPy">&#182;</a></h1><ul>
 <li>Read &rarr; Do Stuff &rarr; Write</li>
-<li>Who is it for?<ul>
+<li>Version 0.9 released</li>
+<li>Windows, OSX, Linux compatible</li>
+<li><p>Installable with <code>pip</code> and <code>conda</code> (conda-forge)</p>
+</li>
+<li><p>Who is it for?</p>
+<ul>
 <li>Operational data processing</li>
 <li>Scientists and researchers</li>
-<li>People who want to make pretty pictures</li>
 </ul>
 </li>
 <li>Why use it?<ul>
-<li>Abstract away the complex parts</li>
-<li>Common interfaces: STOP REWRITING THE SAME CODE OVER AND OVER AGAIN!</li>
-<li>Performance</li>
+<li>Common interfaces</li>
+<li>Performance - <code>xarray</code> and <code>dask</code></li>
+<li>Read, Composite, Modify/Correct, Resample, and Write</li>
 </ul>
 </li>
-<li>Version 0.9 released</li>
-<li>Windows, OSX, Linux compatible</li>
-<li>Installable with <code>pip</code> and <code>conda</code> (conda-forge)</li>
-<li>Uses <code>xarray</code> and <code>dask</code></li>
 </ul>
 
 </div>
@@ -12036,7 +12033,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Read:-How-do-I-get-the-information-I-need?">Read: How do I get the information I need?<a class="anchor-link" href="#Read:-How-do-I-get-the-information-I-need?">&#182;</a></h1><ul>
-<li>Reading satellite data sucks<ul>
+<li>Reading satellite data is annoying<ul>
 <li>Formats: NetCDF, HDF5, custom binary, compressed</li>
 <li>File "schemes" and organization</li>
 <li>Fill values</li>
@@ -12119,16 +12116,40 @@ a.anchor-link {
 </div>
 
 </div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Loading-data-and-the-Scene-object">Loading data and the Scene object<a class="anchor-link" href="#Loading-data-and-the-Scene-object">&#182;</a></h1><ul>
+<li>By Name</li>
+<li>By Wavelength</li>
+<li>By <code>DatasetID</code></li>
+<li>Specifying variations<ul>
+<li>resolution</li>
+<li>polarization</li>
+<li>calibration - counts, radiance, reflectance, brightness temperature, etc.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">DatasetID</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
 
 <span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/abi/20170920/*.nc&#39;</span><span class="p">))</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_names</span><span class="p">()</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span>
+    <span class="s1">&#39;C01&#39;</span><span class="p">,</span>
+    <span class="mf">0.62</span><span class="p">,</span>
+    <span class="n">DatasetID</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;C02&#39;</span><span class="p">,</span> <span class="n">calibration</span><span class="o">=</span><span class="s1">&#39;radiance&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12141,7 +12162,42 @@ a.anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[1]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=())]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_names</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -12155,14 +12211,13 @@ a.anchor-link {
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span> <span class="s1">&#39;C02&#39;</span><span class="p">])</span>
-<span class="n">scn</span><span class="p">[</span><span class="s1">&#39;C01&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_ids</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12175,42 +12230,106 @@ a.anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[2]:</div>
+<div class="prompt output_prompt">Out[30]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;xarray.DataArray (y: 10848, x: 10848)&gt;
-dask.array&lt;shape=(10848, 10848), dtype=float64, chunksize=(4096, 4096)&gt;
+<pre>[DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C03&#39;, wavelength=(0.8455, 0.865, 0.8845), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C03&#39;, wavelength=(0.8455, 0.865, 0.8845), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C04&#39;, wavelength=(1.3705, 1.378, 1.3855), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C04&#39;, wavelength=(1.3705, 1.378, 1.3855), resolution=2000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C05&#39;, wavelength=(1.58, 1.61, 1.64), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C05&#39;, wavelength=(1.58, 1.61, 1.64), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C06&#39;, wavelength=(2.225, 2.25, 2.275), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C06&#39;, wavelength=(2.225, 2.25, 2.275), resolution=2000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C07&#39;, wavelength=(3.8, 3.9, 4.0), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C07&#39;, wavelength=(3.8, 3.9, 4.0), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C08&#39;, wavelength=(5.77, 6.185, 6.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C08&#39;, wavelength=(5.77, 6.185, 6.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C09&#39;, wavelength=(6.75, 6.95, 7.15), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C09&#39;, wavelength=(6.75, 6.95, 7.15), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C10&#39;, wavelength=(7.24, 7.34, 7.44), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C10&#39;, wavelength=(7.24, 7.34, 7.44), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C11&#39;, wavelength=(8.3, 8.5, 8.7), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C11&#39;, wavelength=(8.3, 8.5, 8.7), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C12&#39;, wavelength=(9.42, 9.61, 9.8), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C12&#39;, wavelength=(9.42, 9.61, 9.8), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C13&#39;, wavelength=(10.1, 10.35, 10.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C13&#39;, wavelength=(10.1, 10.35, 10.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C14&#39;, wavelength=(10.8, 11.2, 11.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C14&#39;, wavelength=(10.8, 11.2, 11.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C15&#39;, wavelength=(11.8, 12.3, 12.8), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C15&#39;, wavelength=(11.8, 12.3, 12.8), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C16&#39;, wavelength=(13.0, 13.3, 13.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
+ DatasetID(name=&#39;C16&#39;, wavelength=(13.0, 13.3, 13.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=())]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;C02&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray (y: 21696, x: 21696)&gt;
+dask.array&lt;shape=(21696, 21696), dtype=float64, chunksize=(4096, 4096)&gt;
 Coordinates:
-  * x        (x) float64 -0.1519 -0.1518 -0.1518 -0.1518 -0.1517 -0.1517 ...
+  * x        (x) float64 -0.1519 -0.1519 -0.1518 -0.1518 -0.1518 -0.1518 ...
     y_image  float32 0.0
     x_image  float32 0.0
-  * y        (y) float64 0.1519 0.1518 0.1518 0.1518 0.1517 0.1517 0.1517 ...
+  * y        (y) float64 0.1519 0.1519 0.1518 0.1518 0.1518 0.1518 0.1518 ...
 Attributes:
     satellite_longitude:    -89.5
     satellite_latitude:     0.0
     satellite_altitude:     35786.0234375
-    modifiers:              ()
-    long_name:              ABI L1b Radiances
-    standard_name:          toa_bidirectional_reflectance
-    platform_name:          GOES-16
-    sensor:                 abi
-    _Unsigned:              true
-    wavelength:             (0.45, 0.47, 0.49)
-    ancillary_variables:    []
-    valid_range:            [   0 1022]
-    cell_methods:           t: point area: point
-    add_offset:             -25.9366
     units:                  %
-    _FillValue:             1023
-    sensor_band_bit_depth:  10
-    calibration:            reflectance
-    name:                   C01
-    resolution:             1000
-    scale_factor:           0.812106
+    modifiers:              ()
+    wavelength:             (0.59, 0.64, 0.69)
     grid_mapping:           goes_imager_projection
+    _Unsigned:              true
+    cell_methods:           t: point area: point
+    standard_name:          toa_bidirectional_reflectance
+    scale_factor:           0.158592
+    ancillary_variables:    []
+    valid_range:            [   0 4094]
+    long_name:              ABI L1b Radiances
+    add_offset:             -20.2899
+    resolution:             500
+    calibration:            reflectance
+    _FillValue:             4095
+    sensor:                 abi
+    sensor_band_bit_depth:  12
+    name:                   C02
+    platform_name:          GOES-16
     start_time:             2017-09-20 17:30:40.800000
     end_time:               2017-09-20 17:41:17.500000
     area:                   Area ID: abi_geos\nDescription: ABI L1B file area...
@@ -12226,89 +12345,17 @@ Attributes:
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;C01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>pyresample.geometry.AreaDefinition</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;C01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Area ID: abi_geos
-Description: ABI L1B file area
-Projection ID: abi_geos
-Projection: {&#39;a&#39;: &#39;6378137.0&#39;, &#39;b&#39;: &#39;6356752.31414&#39;, &#39;h&#39;: &#39;35786023.0&#39;, &#39;lon_0&#39;: &#39;-89.5&#39;, &#39;proj&#39;: &#39;geos&#39;, &#39;sweep&#39;: &#39;x&#39;, &#39;units&#39;: &#39;m&#39;}
-Number of columns: 10848
-Number of rows: 10848
-Area extent: (-5434894.954752679, -5434894.9644517442, 5434894.9644517442, 5434894.954752679)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># scn.show(&#39;C01&#39;)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;C01&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div></div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12318,276 +12365,6 @@ Area extent: (-5434894.954752679, -5434894.9644517442, 5434894.9644517442, 54348
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Loading-variations">Loading variations<a class="anchor-link" href="#Loading-variations">&#182;</a></h1><ul>
-<li>Resolution</li>
-<li>Polarization</li>
-<li>Calibration<ul>
-<li>Counts</li>
-<li>Radiance</li>
-<li>Reflectance/Brightness Temperature/etc</li>
-</ul>
-</li>
-<li><code>DatasetID</code></li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rad_scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/abi/20170920/*.nc&#39;</span><span class="p">))</span>
-<span class="n">rad_scn</span><span class="o">.</span><span class="n">available_dataset_names</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;C01&#39;, &#39;C02&#39;, &#39;C03&#39;, &#39;C04&#39;, &#39;C05&#39;, &#39;C06&#39;, &#39;C07&#39;, &#39;C08&#39;, &#39;C09&#39;, &#39;C10&#39;, &#39;C11&#39;, &#39;C12&#39;, &#39;C13&#39;, &#39;C14&#39;, &#39;C15&#39;, &#39;C16&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rad_scn</span><span class="o">.</span><span class="n">available_dataset_ids</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=())]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rad_scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;C01&#39;</span><span class="p">],</span> <span class="n">calibration</span><span class="o">=</span><span class="s1">&#39;radiance&#39;</span><span class="p">)</span>
-<span class="n">rad_scn</span><span class="p">[</span><span class="s1">&#39;C01&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;xarray.DataArray &#39;Rad&#39; (y: 10848, x: 10848)&gt;
-dask.array&lt;shape=(10848, 10848), dtype=float64, chunksize=(4096, 4096)&gt;
-Coordinates:
-    time     datetime64[ns] 2017-09-20T17:35:59.184896
-  * x        (x) int16 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ...
-    y_image  float32 0.0
-    x_image  float32 0.0
-  * y        (y) int64 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ...
-Attributes:
-    satellite_longitude:    -89.5
-    satellite_latitude:     0.0
-    satellite_altitude:     35786.0234375
-    modifiers:              ()
-    add_offset:             -25.9366
-    valid_range:            [   0 1022]
-    resolution:             1000
-    name:                   C01
-    sensor:                 abi
-    cell_methods:           t: point area: point
-    sensor_band_bit_depth:  10
-    ancillary_variables:    []
-    _FillValue:             1023
-    platform_name:          GOES-16
-    long_name:              ABI L1b Radiances
-    units:                  W m-2 sr-1 um-1
-    grid_mapping:           goes_imager_projection
-    standard_name:          toa_outgoing_radiance_per_unit_wavelength
-    scale_factor:           0.812106
-    _Unsigned:              true
-    calibration:            radiance
-    wavelength:             (0.45, 0.47, 0.49)
-    start_time:             2017-09-20 17:30:40.800000
-    end_time:               2017-09-20 17:41:17.500000
-    area:                   Area ID: some_area_name\nDescription: On-the-fly ...
-    polarization:           None
-    level:                  None</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Load-by-Wavelength">Load by Wavelength<a class="anchor-link" href="#Load-by-Wavelength">&#182;</a></h1>
-<pre><code>...
-wavelength:             (0.45, 0.47, 0.49)
-...</code></pre>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/abi/20170920/*.nc&#39;</span><span class="p">))</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="mf">0.46</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=())]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;C01&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.46</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="p">[</span><span class="mf">0.46</span><span class="p">]</span> <span class="ow">is</span> <span class="n">scn</span><span class="p">[</span><span class="mf">0.475</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12722,109 +12499,13 @@ Attributes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Modify:-How-do-I-make-my-pretty-picture-prettier?">Modify: How do I make my pretty picture prettier?<a class="anchor-link" href="#Modify:-How-do-I-make-my-pretty-picture-prettier?">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Modifiers:-How-do-I-make-my-pretty-picture-prettier?">Modifiers: How do I make my pretty picture prettier?<a class="anchor-link" href="#Modifiers:-How-do-I-make-my-pretty-picture-prettier?">&#182;</a></h1><div class="highlight"><pre><span></span><span class="n">ds_id</span> <span class="o">=</span> <span class="n">DatasetID</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;sunz_corrected&#39;</span><span class="p">,))</span>
+</pre></div>
 <p><img src="true_color_before_after_20170920_173040.jpg" alt="ABI True Color Before/After"></p>
 
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">true_color</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">compositor</span><span class="p p-Indicator">:</span> <span class="kt">!!python/name:satpy.composites.SelfSharpenedRGB</span>
-    <span class="l l-Scalar l-Scalar-Plain">prerequisites</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">C02</span>
-      <span class="l l-Scalar l-Scalar-Plain">modifiers</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">sunz_corrected</span><span class="p p-Indicator">,</span> <span class="nv">rayleigh_corrected</span><span class="p p-Indicator">]</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">green</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">C01</span>
-      <span class="l l-Scalar l-Scalar-Plain">modifiers</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">sunz_corrected</span><span class="p p-Indicator">,</span> <span class="nv">rayleigh_corrected</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">standard_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true_color</span>
-</pre></div>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">DatasetID</span>
-<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/abi/20170920/*.nc&#39;</span><span class="p">))</span>
-
-<span class="n">ds_id</span> <span class="o">=</span> <span class="n">DatasetID</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;sunz_corrected&#39;</span><span class="p">,))</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="n">ds_id</span><span class="p">])</span>
-<span class="n">scn</span><span class="p">[</span><span class="s1">&#39;C01&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;xarray.DataArray (y: 10848, x: 10848)&gt;
-dask.array&lt;shape=(10848, 10848), dtype=float64, chunksize=(4096, 4096)&gt;
-Coordinates:
-  * x        (x) float64 -0.1519 -0.1518 -0.1518 -0.1518 -0.1517 -0.1517 ...
-    y_image  float32 0.0
-    x_image  float32 0.0
-  * y        (y) float64 0.1519 0.1518 0.1518 0.1518 0.1517 0.1517 0.1517 ...
-Attributes:
-    satellite_longitude:    -89.5
-    satellite_latitude:     0.0
-    satellite_altitude:     35786.0234375
-    cell_methods:           t: point area: point
-    add_offset:             -25.9366
-    standard_name:          toa_bidirectional_reflectance
-    scale_factor:           0.812106
-    valid_range:            [   0 1022]
-    sensor:                 abi
-    modifiers:              (&#39;sunz_corrected&#39;,)
-    units:                  %
-    resolution:             1000
-    _Unsigned:              true
-    long_name:              ABI L1b Radiances
-    platform_name:          GOES-16
-    grid_mapping:           goes_imager_projection
-    _FillValue:             1023
-    ancillary_variables:    []
-    sensor_band_bit_depth:  10
-    calibration:            reflectance
-    name:                   C01
-    wavelength:             (0.45, 0.47, 0.49)
-    start_time:             2017-09-20 17:30:40.800000
-    end_time:               2017-09-20 17:41:17.500000
-    area:                   Area ID: some_area_name\nDescription: On-the-fly ...
-    polarization:           None
-    level:                  None</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12858,7 +12539,8 @@ Attributes:
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
-<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/viirs/conus_day/*t1801*.h5&#39;</span><span class="p">))</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span>
+            <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/viirs/conus_day/*t1801*.h5&#39;</span><span class="p">))</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;I04&#39;</span><span class="p">])</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;I04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">])</span>
 </pre></div>
@@ -12887,137 +12569,7 @@ Attributes:
 </div>
 </div>
 
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;I04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">])</span>
-</pre></div>
-
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Shape: (1536, 6400)
-Lons: &lt;xarray.DataArray (y: 1536, x: 6400)&gt;
-dask.array&lt;shape=(1536, 6400), dtype=float64, chunksize=(1536, 4096)&gt;
-Dimensions without coordinates: y, x
-Attributes:
-    start_orbit:          1708
-    end_orbit:            1708
-    modifiers:            ()
-    standard_name:        longitude
-    units:                degrees
-    resolution:           371
-    calibration:          None
-    polarization:         None
-    file_key:             All_Data/{file_group}_All/Longitude
-    platform_name:        Suomi-NPP
-    level:                None
-    sensor:               viirs
-    file_type:            gitco
-    wavelength:           None
-    name:                 i_longitude
-    start_time:           2012-02-25 18:01:24.570942
-    end_time:             2012-02-25 18:02:48.746550
-    ancillary_variables:  []
-Lats: &lt;xarray.DataArray (y: 1536, x: 6400)&gt;
-dask.array&lt;shape=(1536, 6400), dtype=float64, chunksize=(1536, 4096)&gt;
-Dimensions without coordinates: y, x
-Attributes:
-    start_orbit:          1708
-    end_orbit:            1708
-    modifiers:            ()
-    standard_name:        latitude
-    units:                degrees
-    resolution:           371
-    calibration:          None
-    polarization:         None
-    file_key:             All_Data/{file_group}_All/Latitude
-    platform_name:        Suomi-NPP
-    level:                None
-    sensor:               viirs
-    file_type:            gitco
-    wavelength:           None
-    name:                 i_latitude
-    start_time:           2012-02-25 18:01:24.570942
-    end_time:             2012-02-25 18:02:48.746550
-    ancillary_variables:  []
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;I04&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;xarray.DataArray (y: 1536, x: 6400)&gt;
-dask.array&lt;shape=(1536, 6400), dtype=float64, chunksize=(1536, 4096)&gt;
-Dimensions without coordinates: y, x
-Attributes:
-    start_orbit:          1708
-    end_orbit:            1708
-    coordinates:          (&#39;i_longitude&#39;, &#39;i_latitude&#39;)
-    modifiers:            ()
-    standard_name:        toa_brightness_temperature
-    calibration:          brightness_temperature
-    resolution:           371
-    units:                K
-    polarization:         None
-    platform_name:        Suomi-NPP
-    level:                None
-    sensor:               viirs
-    file_type:            svi04
-    wavelength:           (3.58, 3.74, 3.9)
-    name:                 I04
-    start_time:           2012-02-25 18:01:24.570942
-    end_time:             2012-02-25 18:02:48.746550
-    area:                 Shape: (1536, 6400)\nLons: &lt;xarray.DataArray (y: 15...
-    ancillary_variables:  []</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -13045,7 +12597,8 @@ Attributes:
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/viirs/conus_day/*t180*.h5&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span>
+            <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/viirs/conus_day/*t180*.h5&#39;</span><span class="p">))</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;I04&#39;</span><span class="p">])</span>
 <span class="n">new_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;211e&#39;</span><span class="p">)</span>
 <span class="n">new_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;I04&#39;</span><span class="p">)</span>
@@ -13075,6 +12628,7 @@ Attributes:
     <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;merc&#39;</span><span class="p">,</span>
     <span class="p">{</span><span class="s1">&#39;proj&#39;</span><span class="p">:</span> <span class="s1">&#39;merc&#39;</span><span class="p">,</span> <span class="s1">&#39;datum&#39;</span><span class="p">:</span> <span class="s1">&#39;WGS84&#39;</span><span class="p">,</span> <span class="s1">&#39;lon_0&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">95.0</span><span class="p">},</span>
     <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1750000</span><span class="p">,</span> <span class="mi">4500000</span><span class="p">,</span> <span class="mi">5500000</span><span class="p">))</span>
+
 <span class="n">new_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def</span><span class="p">,</span> <span class="n">radius_of_influence</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">new_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;I04&#39;</span><span class="p">)</span>
 </pre></div>
@@ -13143,7 +12697,7 @@ Attributes:
 </div>
 </div>
 
-</div><div class="fragment">
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -13156,7 +12710,7 @@ Attributes:
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13401,6 +12955,8 @@ Attributes:
 <li>Community Website: <a href="http://pytroll.github.io/">http://pytroll.github.io/</a></li>
 <li>GitHub: <a href="https://github.com/pytroll/satpy">https://github.com/pytroll/satpy</a></li>
 <li>SatPy Documentation: <a href="http://satpy.readthedocs.io/en/latest/">http://satpy.readthedocs.io/en/latest/</a></li>
+<li>Workshops twice a year!</li>
+<li>Chat with us on slack (invite link on community website)</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/pytroll/pytroll/master/web/source/images/pytroll_dark_small.png" style="background-color:black;"></p>
 
