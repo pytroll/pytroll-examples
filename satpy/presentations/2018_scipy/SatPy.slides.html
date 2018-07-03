@@ -16,7 +16,7 @@
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -11907,7 +11907,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To convert and serve this notebook as a reveal.js slideshow:</p>
-<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">SatPy</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">slides</span> <span class="o">--</span><span class="n">post</span> <span class="n">serve</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_theme</span><span class="o">=</span><span class="n">solarized</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_scroll</span><span class="o">=</span><span class="bp">True</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_transition</span><span class="o">=</span><span class="n">none</span>
+<div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">SatPy</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">slides</span> <span class="o">--</span><span class="n">post</span> <span class="n">serve</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_theme</span><span class="o">=</span><span class="n">simple</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_scroll</span><span class="o">=</span><span class="bp">True</span> <span class="o">--</span><span class="n">SlidesExporter</span><span class="o">.</span><span class="n">reveal_transition</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 
 </div>
@@ -11951,10 +11951,23 @@ a.anchor-link {
 <li>Software Developer @ Space Science and Engineering Center (SSEC) - University of Wisconsin - Madison</li>
 <li>Community Satellite Processing Package (CSPP) Team</li>
 <li>Polar2Grid/Geo2Grid</li>
-<li>PyTroll/SatPy Maintainer</li>
 <li>Satellite Information Familiarization Tool (SIFT) - Poster</li>
 <li>VisPy Maintainer - Plenary</li>
+<li>PyTroll/SatPy Maintainer</li>
 </ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h1><ol>
+<li>What do we work with?</li>
+<li>How does SatPy make our work easier?</li>
+<li>Cool stuff you can do with SatPy</li>
+</ol>
 
 </div>
 </div>
@@ -11965,19 +11978,13 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Weather-Satellite-Data">Weather Satellite Data<a class="anchor-link" href="#Weather-Satellite-Data">&#182;</a></h1><ul>
 <li>Use Cases:<ul>
-<li>Forecasting and Forecast models</li>
+<li>Forecasting and forecast models</li>
 <li>Research/Analysis</li>
-<li>Pretty Pictures</li>
+<li>Pretty pictures</li>
+<li>Operational processing</li>
 </ul>
 </li>
-<li>Instruments:<ul>
-<li>Geostationary (full disk and regions)</li>
-<li>Polar-orbiting</li>
-<li>Direct broadcast versus archive</li>
-<li>Imagers and sounders</li>
-<li>Multiple visible, infrared, near-infrared channels or bands</li>
-</ul>
-</li>
+<li>Read &rarr; Do Stuff &rarr; Write</li>
 </ul>
 
 </div>
@@ -12006,21 +12013,15 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="SatPy">SatPy<a class="anchor-link" href="#SatPy">&#182;</a></h1><ul>
-<li>Read &rarr; Do Stuff &rarr; Write</li>
 <li>Version 0.9 released</li>
 <li>Windows, OSX, Linux compatible</li>
 <li><p>Installable with <code>pip</code> and <code>conda</code> (conda-forge)</p>
 </li>
-<li><p>Who is it for?</p>
+<li><p>Why use it?</p>
 <ul>
-<li>Operational data processing</li>
-<li>Scientists and researchers</li>
-</ul>
-</li>
-<li>Why use it?<ul>
 <li>Common interfaces</li>
 <li>Performance - <code>xarray</code> and <code>dask</code></li>
-<li>Read, Composite, Modify/Correct, Resample, and Write</li>
+<li>Community</li>
 </ul>
 </li>
 </ul>
@@ -12048,73 +12049,6 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">available_readers</span>
-<span class="nb">sorted</span><span class="p">(</span><span class="n">available_readers</span><span class="p">())</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;abi_l1b&#39;,
- &#39;acspo&#39;,
- &#39;ahi_hsd&#39;,
- &#39;amsr2_l1b&#39;,
- &#39;avhrr_aapp_l1b&#39;,
- &#39;avhrr_eps_l1b&#39;,
- &#39;clavrx&#39;,
- &#39;fci_fdhsi&#39;,
- &#39;generic_image&#39;,
- &#39;geocat&#39;,
- &#39;ghrsst_osisaf&#39;,
- &#39;grib&#39;,
- &#39;hdf4_caliopv3&#39;,
- &#39;hdfeos_l1b&#39;,
- &#39;hrit_electrol&#39;,
- &#39;hrit_goes&#39;,
- &#39;hrit_jma&#39;,
- &#39;hrit_msg&#39;,
- &#39;iasi_l2&#39;,
- &#39;li_l2&#39;,
- &#39;maia&#39;,
- &#39;native_msg&#39;,
- &#39;nc_nwcsaf_msg&#39;,
- &#39;nc_nwcsaf_pps&#39;,
- &#39;nc_olci_l1b&#39;,
- &#39;nc_olci_l2&#39;,
- &#39;nc_slstr&#39;,
- &#39;nucaps&#39;,
- &#39;omps_edr&#39;,
- &#39;safe_sar_c&#39;,
- &#39;scatsat1_l2b&#39;,
- &#39;viirs_compact&#39;,
- &#39;viirs_l1b&#39;,
- &#39;viirs_sdr&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12137,48 +12071,48 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">DatasetID</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
 
 <span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/abi/20170920/*.nc&#39;</span><span class="p">))</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span>
-    <span class="s1">&#39;C01&#39;</span><span class="p">,</span>
-    <span class="mf">0.62</span><span class="p">,</span>
-    <span class="n">DatasetID</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;C02&#39;</span><span class="p">,</span> <span class="n">calibration</span><span class="o">=</span><span class="s1">&#39;radiance&#39;</span><span class="p">)</span>
-<span class="p">])</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span> <span class="s1">&#39;C02&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=())]</pre>
-</div>
-
-</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="mf">0.46</span><span class="p">,</span> <span class="mf">0.62</span><span class="p">])</span>
+</pre></div>
 
 </div>
 </div>
+</div>
 
-</div></section><section>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds_id</span> <span class="o">=</span> <span class="n">DatasetID</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;C02&#39;</span><span class="p">,</span> <span class="n">calibration</span><span class="o">=</span><span class="s1">&#39;radiance&#39;</span><span class="p">)</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="n">ds_id</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
@@ -12477,31 +12411,50 @@ Attributes:
 </div>
 </div>
 
-</div></div></section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composite-YAML-configuration-files">Composite YAML configuration files<a class="anchor-link" href="#Composite-YAML-configuration-files">&#182;</a></h1><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">airmass</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">compositor</span><span class="p p-Indicator">:</span> <span class="kt">!!python/name:satpy.composites.Airmass</span>
-    <span class="l l-Scalar l-Scalar-Plain">prerequisites</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">6.2</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">7.3</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">9.7</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">10.3</span>
-    <span class="l l-Scalar l-Scalar-Plain">standard_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">airmass</span>
+<h1 id="Modifiers:-How-do-I-make-my-pretty-picture-prettier?">Modifiers: How do I make my pretty picture prettier?<a class="anchor-link" href="#Modifiers:-How-do-I-make-my-pretty-picture-prettier?">&#182;</a></h1><p><img src="true_color_before_after_20170920_173040.jpg" alt="ABI True Color Before/After"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Do-the-impossible">Do the impossible<a class="anchor-link" href="#Do-the-impossible">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;true_color&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Modifiers:-How-do-I-make-my-pretty-picture-prettier?">Modifiers: How do I make my pretty picture prettier?<a class="anchor-link" href="#Modifiers:-How-do-I-make-my-pretty-picture-prettier?">&#182;</a></h1><div class="highlight"><pre><span></span><span class="n">ds_id</span> <span class="o">=</span> <span class="n">DatasetID</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;sunz_corrected&#39;</span><span class="p">,))</span>
-</pre></div>
-<p><img src="true_color_before_after_20170920_173040.jpg" alt="ABI True Color Before/After"></p>
+<p>Operations Involved:</p>
+<ul>
+<li>3 input bands (500m and 1000m)</li>
+<li>3 complex data enhancements</li>
+<li>1 pseudo-band (green)</li>
+<li>Upscale to 500m</li>
+<li>Final result: 21696 rows * 21696 cols * 8 bytes * 3 input bands = ~10.5 GB</li>
+<li>Dask-based SatPy loads, computes, and saves to geotiff in 6-8 minutes</li>
+</ul>
 
 </div>
 </div>
@@ -12511,30 +12464,32 @@ Attributes:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Resampling">Resampling<a class="anchor-link" href="#Resampling">&#182;</a></h1><ul>
-<li>Target Geolocation<ul>
-<li>SwathDefinition</li>
-<li>AreaDefinition<ul>
-<li>Projection</li>
-<li>Extents</li>
-<li>Size (number of pixels)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Algorithm<ul>
-<li>Nearest Neighbor</li>
-<li>Elliptical Weighted Averaging (EWA)</li>
-<li>"Native"</li>
-</ul>
-</li>
+<li>Remap to a common projection/grid</li>
+<li>Uniform grid of data pixels</li>
+<li>Change projections</li>
+<li>Change pixel size</li>
 </ul>
 
 </div>
 </div>
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Users want a common projection independent of the polar orbit</li>
+<li>Resampling in order to remap to one common projection</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span>
@@ -12542,30 +12497,9 @@ Attributes:
 <span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span>
             <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/viirs/conus_day/*t1801*.h5&#39;</span><span class="p">))</span>
 <span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;I04&#39;</span><span class="p">])</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">scn</span><span class="p">[</span><span class="s1">&#39;I04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>pyresample.geometry.SwathDefinition</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12617,35 +12551,6 @@ Attributes:
 
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyresample.geometry</span> <span class="k">import</span> <span class="n">AreaDefinition</span>
-<span class="n">area_def</span> <span class="o">=</span> <span class="n">AreaDefinition</span><span class="p">(</span>
-    <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;merc&#39;</span><span class="p">,</span>
-    <span class="p">{</span><span class="s1">&#39;proj&#39;</span><span class="p">:</span> <span class="s1">&#39;merc&#39;</span><span class="p">,</span> <span class="s1">&#39;datum&#39;</span><span class="p">:</span> <span class="s1">&#39;WGS84&#39;</span><span class="p">,</span> <span class="s1">&#39;lon_0&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">95.0</span><span class="p">},</span>
-    <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1750000</span><span class="p">,</span> <span class="mi">4500000</span><span class="p">,</span> <span class="mi">5500000</span><span class="p">))</span>
-
-<span class="n">new_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">area_def</span><span class="p">,</span> <span class="n">radius_of_influence</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">new_scn</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;I04&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="I04_20120225_180125.custom_area.png" alt="NPP VIIRS I04 Custom" style="width:450px;"></p>
-
-</div>
-</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12659,44 +12564,11 @@ Attributes:
 <li>CF-compliant NetCDF (limited projection support)</li>
 </ul>
 </li>
+<li>Use dask blocks when possible</li>
 </ul>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">available_writers</span>
-<span class="n">available_writers</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[63]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;mitiff&#39;, &#39;simple_image&#39;, &#39;geotiff&#39;, &#39;cf&#39;, &#39;scmi&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12715,13 +12587,27 @@ Attributes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Basics">The Basics<a class="anchor-link" href="#The-Basics">&#182;</a></h1><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="kn">import</span> <span class="n">Scene</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+<span class="n">scn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span> <span class="s1">&#39;C02&#39;</span><span class="p">,</span> <span class="s1">&#39;C08&#39;</span><span class="p">,</span> <span class="s1">&#39;true_color&#39;</span><span class="p">,</span> <span class="s1">&#39;air_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;natural&#39;</span><span class="p">])</span>
+<span class="n">new_scn</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">resampler</span><span class="o">=</span><span class="s1">&#39;native&#39;</span><span class="p">)</span>
+<span class="n">new_scn</span><span class="o">.</span><span class="n">save_datasets</span><span class="p">(</span><span class="n">base_dir</span><span class="o">=</span><span class="s1">&#39;/tmp&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Fun-Stuff:-Stacked-Scenes">Fun Stuff: Stacked Scenes<a class="anchor-link" href="#Fun-Stuff:-Stacked-Scenes">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span><span class="p">,</span> <span class="n">MultiScene</span>
@@ -12733,6 +12619,7 @@ Attributes:
 <span class="n">viirs_scenes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;viirs_sdr&#39;</span><span class="p">,</span>
                       <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="n">vp</span><span class="p">,</span> <span class="s1">&#39;*.h5&#39;</span><span class="p">)))</span> 
                 <span class="k">for</span> <span class="n">vp</span> <span class="ow">in</span> <span class="n">viirs_passes</span><span class="p">]</span>
+
 <span class="n">mscn</span> <span class="o">=</span> <span class="n">MultiScene</span><span class="p">(</span><span class="n">viirs_scenes</span><span class="p">)</span>
 <span class="n">mscn</span><span class="o">.</span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;I04&#39;</span><span class="p">])</span>
 <span class="n">new_mscn</span> <span class="o">=</span> <span class="n">mscn</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;211e&#39;</span><span class="p">)</span>
@@ -12754,43 +12641,8 @@ Attributes:
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Rasterio 1.0+ required for setting colorinterp
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[#####                                   ] | 13% Completed |  9.0s</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/davidh/anaconda/envs/polar2grid_py36/lib/python3.6/site-packages/dask/local.py:271: RuntimeWarning: invalid value encountered in greater_equal
-  return func(*args2)
-/Users/davidh/anaconda/envs/polar2grid_py36/lib/python3.6/site-packages/dask/local.py:271: RuntimeWarning: invalid value encountered in less_equal
-  return func(*args2)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[########################################] | 100% Completed |  4min 17.1s
+<pre>[########################################] | 100% Completed |  4min 15.4s
 [########################################] | 100% Completed |  0.1s
 </pre>
 </div>
@@ -12802,7 +12654,7 @@ Attributes:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> gdal_translate -of PNG -outsize <span class="m">10</span>% <span class="m">10</span>% I04_20180629_061415<span class="o">{</span>.tif,.png<span class="o">}</span>
@@ -12955,6 +12807,7 @@ Attributes:
 <li>Community Website: <a href="http://pytroll.github.io/">http://pytroll.github.io/</a></li>
 <li>GitHub: <a href="https://github.com/pytroll/satpy">https://github.com/pytroll/satpy</a></li>
 <li>SatPy Documentation: <a href="http://satpy.readthedocs.io/en/latest/">http://satpy.readthedocs.io/en/latest/</a></li>
+<li>Mailing List: <a href="https://groups.google.com/d/forum/pytroll">https://groups.google.com/d/forum/pytroll</a></li>
 <li>Workshops twice a year!</li>
 <li>Chat with us on slack (invite link on community website)</li>
 </ul>
