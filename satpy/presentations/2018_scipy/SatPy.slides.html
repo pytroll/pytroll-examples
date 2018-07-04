@@ -12115,103 +12115,6 @@ a.anchor-link {
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_names</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[26]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;C01&#39;, &#39;C02&#39;, &#39;C03&#39;, &#39;C04&#39;, &#39;C05&#39;, &#39;C06&#39;, &#39;C07&#39;, &#39;C08&#39;, &#39;C09&#39;, &#39;C10&#39;, &#39;C11&#39;, &#39;C12&#39;, &#39;C13&#39;, &#39;C14&#39;, &#39;C15&#39;, &#39;C16&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">available_dataset_ids</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[30]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C01&#39;, wavelength=(0.45, 0.47, 0.49), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C02&#39;, wavelength=(0.59, 0.64, 0.69), resolution=500, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C03&#39;, wavelength=(0.8455, 0.865, 0.8845), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C03&#39;, wavelength=(0.8455, 0.865, 0.8845), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C04&#39;, wavelength=(1.3705, 1.378, 1.3855), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C04&#39;, wavelength=(1.3705, 1.378, 1.3855), resolution=2000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C05&#39;, wavelength=(1.58, 1.61, 1.64), resolution=1000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C05&#39;, wavelength=(1.58, 1.61, 1.64), resolution=1000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C06&#39;, wavelength=(2.225, 2.25, 2.275), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C06&#39;, wavelength=(2.225, 2.25, 2.275), resolution=2000, polarization=None, calibration=&#39;reflectance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C07&#39;, wavelength=(3.8, 3.9, 4.0), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C07&#39;, wavelength=(3.8, 3.9, 4.0), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C08&#39;, wavelength=(5.77, 6.185, 6.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C08&#39;, wavelength=(5.77, 6.185, 6.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C09&#39;, wavelength=(6.75, 6.95, 7.15), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C09&#39;, wavelength=(6.75, 6.95, 7.15), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C10&#39;, wavelength=(7.24, 7.34, 7.44), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C10&#39;, wavelength=(7.24, 7.34, 7.44), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C11&#39;, wavelength=(8.3, 8.5, 8.7), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C11&#39;, wavelength=(8.3, 8.5, 8.7), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C12&#39;, wavelength=(9.42, 9.61, 9.8), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C12&#39;, wavelength=(9.42, 9.61, 9.8), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C13&#39;, wavelength=(10.1, 10.35, 10.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C13&#39;, wavelength=(10.1, 10.35, 10.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C14&#39;, wavelength=(10.8, 11.2, 11.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C14&#39;, wavelength=(10.8, 11.2, 11.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C15&#39;, wavelength=(11.8, 12.3, 12.8), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C15&#39;, wavelength=(11.8, 12.3, 12.8), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C16&#39;, wavelength=(13.0, 13.3, 13.6), resolution=2000, polarization=None, calibration=&#39;brightness_temperature&#39;, level=None, modifiers=()),
- DatasetID(name=&#39;C16&#39;, wavelength=(13.0, 13.3, 13.6), resolution=2000, polarization=None, calibration=&#39;radiance&#39;, level=None, modifiers=())]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -12310,43 +12213,6 @@ Attributes:
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">satpy</span> <span class="k">import</span> <span class="n">Scene</span>
-<span class="kn">from</span> <span class="nn">glob</span> <span class="k">import</span> <span class="n">glob</span>
-
-<span class="n">scn</span> <span class="o">=</span> <span class="n">Scene</span><span class="p">(</span><span class="n">reader</span><span class="o">=</span><span class="s1">&#39;abi_l1b&#39;</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;/data/data/abi/20170920/*.nc&#39;</span><span class="p">))</span>
-<span class="n">scn</span><span class="o">.</span><span class="n">available_composite_names</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[1]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;airmass&#39;, &#39;ash&#39;, &#39;dust&#39;, &#39;fog&#39;, &#39;green&#39;, &#39;green_raw&#39;, &#39;green_snow&#39;, &#39;ir_cloud_day&#39;, &#39;natural&#39;, &#39;natural_raw&#39;, &#39;natural_sun&#39;, &#39;night_microphysics&#39;, &#39;overview&#39;, &#39;overview_raw&#39;, &#39;true_color&#39;, &#39;true_color_raw&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -12411,7 +12277,7 @@ Attributes:
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
