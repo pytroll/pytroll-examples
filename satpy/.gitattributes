@@ -7,3 +7,5 @@ truecolor_viirs_smoke_thumb.png filter=lfs diff=lfs merge=lfs -text
 viirs_true_color_20180225_thumb.png filter=lfs diff=lfs merge=lfs -text
 ears_nwc_ctth_20180314T1000Z_20180314T1014Z_thumbnail.png filter=lfs diff=lfs merge=lfs -text
 ears_nwc_cloudtype_20180314T1005Z_20180314T1010Z_thumb.png filter=lfs diff=lfs merge=lfs -text
+viirs_true_color_iband_enhanced_thumb.png filter=lfs diff=lfs merge=lfs -text
+sentinel2_msi_true_color_rgb_thumb.png filter=lfs diff=lfs merge=lfs -text
