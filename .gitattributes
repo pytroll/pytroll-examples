@@ -1,2 +1,4 @@
-pyspectral/olci_20171015_westafrica_true_color_raw.png filter=lfs diff=lfs merge=lfs -text
-pyspectral/olci_20171015_true_color_desert_and_sea.png filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.tif filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
