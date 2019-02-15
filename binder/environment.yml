@@ -24,13 +24,30 @@ dependencies:
   - graphviz
   - nodejs
   # pytroll dependencies
-  - satpy
+  #- satpy
+  # satpy dependencies
+  - pyresample
+  - pillow
+  - pyresample
+  - trollsift
+  - trollimage
+  - pykdtree
   - pyspectral
+  - pyyaml
+  - h5py
+  - netcdf4
+  - pyorbital
   - imageio
   - imageio-ffmpeg
   - cartopy
   - metpy
   - siphon
+  - gcsfs
+  - fusepy
+  - pandas
   - pip:
     - kubernetes
     - graphviz
+    - gsutil
+    - crcmod
+    - git+https://github.com/pytroll/satpy.git@master
