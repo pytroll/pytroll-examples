@@ -6,10 +6,4 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                              jupyter-leaflet \
                              dask-labextension
 
-# Mount GOES-16 ABI and GOES-17 ABI buckets
-mkdir -p "${HOME}/data/goes16_abi"
-#gcsfuse gcp-public-data-goes-16 "${HOME}/data/goes16_abi"
-mkdir -p "${HOME}/data/goes17_abi"
-#gcsfuse gcp-public-data-goes-17 "${HOME}/data/goes17_abi"
-
 #EOF
