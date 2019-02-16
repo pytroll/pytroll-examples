@@ -42,12 +42,9 @@ dependencies:
   - cartopy
   - metpy
   - siphon
-  - gcsfs
-  - fusepy
   - pandas
+  #- gcsfs
   - pip:
     - kubernetes
     - graphviz
-    - gsutil
-    - crcmod
     - git+https://github.com/pytroll/satpy.git@master
