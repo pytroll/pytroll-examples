@@ -12,8 +12,12 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager \
 # first, check if we have a gsutil command already
 command -v gsutil
 if [ $? -ne 0 ]; then
-    curl https://sdk.cloud.google.com -o google_cloud.sh
-    bash google_cloud.sh --disable-prompts
+    curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-236.0.0-linux-x86_64.tar.gz -o gc_sdk.tar.gz
+    tar -xzf gc_sdk.tar.gz
+    ./google-cloud-sdk/install.sh --usage-reporting false --path-update true --quiet
+    source .bashrc
 fi
+
+gcloud components update
 
 #EOF
