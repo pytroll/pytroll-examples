@@ -13,5 +13,9 @@ See http://pangeo.io for more information.
 
 Some examples depend on input data that is not publicly available or has not been compiled in to a single download source. This is being slowly fixed as solutions are discovered for easily accessing those instruments' data over the internet.
 
+## Contributing
+
+If you would like to contribute to these examples please see the [Developer's Guide](https://satpy.readthedocs.io/en/latest/dev_guide/index.html) in `Satpy`
+
 [1]: http://binder.pangeo.io/badge.svg
 
