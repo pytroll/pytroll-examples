@@ -15,7 +15,7 @@ Some examples depend on input data that is not publicly available or has not bee
 
 ## Contributing
 
-If you would like to contribute to these examples please see the [Developer's Guide](https://satpy.readthedocs.io/en/latest/dev_guide/index.html) in `Satpy`
+If you would like to contribute to these examples please see the [Developer's Guide](https://satpy.readthedocs.io/en/latest/dev_guide/index.html) in `Satpy`.
 
 [1]: http://binder.pangeo.io/badge.svg
 
