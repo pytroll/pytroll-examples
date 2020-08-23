@@ -1,8 +1,9 @@
-name: pangeo
+name: pytroll
 channels:
   - conda-forge
 dependencies:
   - python=3.6
+  - pip
   - xarray
   - dask
   - distributed
