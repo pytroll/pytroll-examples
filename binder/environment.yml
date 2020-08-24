@@ -19,7 +19,7 @@ dependencies:
   - nomkl
   - nbserverproxy
   - jupyter
-  - jupyterlab=0.35
+  - jupyterlab
   - jupyterlab_launcher
   - jupyter_client
   - ipywidgets
