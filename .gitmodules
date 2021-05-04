@@ -1,4 +1,4 @@
 [submodule "tutorial-satpy-half-day"]
 	path = tutorial-satpy-half-day
 	url = https://github.com/pytroll/tutorial-satpy-half-day.git
-	branch = master
+	branch = main

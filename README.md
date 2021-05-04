@@ -5,7 +5,7 @@ Pytroll examples showcase various features in Pytroll packages like satpy, pyres
 ## Interactive Examples
 
 These examples can be run from a live Binder/JupyterHub environment.
-Try these notebooks on binder.pangeo.io: [![Binder Link][1]](http://binder.pangeo.io/v2/gh/pytroll/pytroll-examples/master)
+Try these notebooks on binder.pangeo.io: [![Binder Link][1]](http://binder.pangeo.io/v2/gh/pytroll/pytroll-examples/main)
 
 See http://pangeo.io for more information.
 

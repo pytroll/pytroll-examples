@@ -49,4 +49,4 @@ dependencies:
   - pip:
     - kubernetes
     - graphviz
-    - git+https://github.com/pytroll/satpy.git@master
+    - git+https://github.com/pytroll/satpy.git@main
